@@ -1,34 +1,76 @@
 public class Main {
-    public static void main(String[] args)
+    Node head;
+    int s =0;
+    public class Node
     {
-        LinkedList list = new LinkedList();
-      list.insert(5);
-      list.insert(10);
-      list.insert(24);
-      list.insert(4);
-//      list.insert(5);
-//      list.insert(10);https://www.hackerrank.com/certificates/177f611cba78
-//      list.insert(24);
-//      list.insert(24);
-//      list.insert(34);
-//      list.insert(34);
-      System.out.println("Before Reversing");
-      list.display();
-//      System.out.println("\nInserting at position");
-//      list.insertAtPos(24,15);
-//      list.display();
-//      System.out.println("\nAfter deleting node 24");
-//      list.deleteNode(24);
-//      list.display();
-//      System.out.println("\nAfter sorting the linked list");
-//      list.sortAscending();
-//      list.display();
-//        System.out.println("After removing duplicates");
-//        list.deleteDuplicate();
-//        list.display();
-        System.out.println("After Reversing linkedlist");
-        list.Reverse();
+        int data;
+        Node next;
+    }
+
+    public void insert(int data)
+    {
+        Node newNode = new Node();
+        newNode.data = data;
+        newNode.next = null;
+
+        if(head == null)
+        {
+            head = newNode;
+            s++;
+        }
+        else
+        {
+            Node currNode = head;
+            while(currNode.next!=null)
+            {
+                currNode = currNode.next;
+            }
+            currNode.next = newNode;
+            s++;
+        }
+    }
+    public void display()
+    {
+        Node currNode = head;
+        while(currNode!=null){
+            System.out.print(currNode.data+ " --> ");
+            currNode = currNode.next;
+        }
+        System.out.println("null");
+
+    }
+    public void size()
+    {
+        System.out.println("size is = "+s);
+    }
+    public void middle()
+    {
+      Node slow = head;
+      Node fast = head;
+      while(fast!=null && fast.next!=null)
+        {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        System.out.println(slow.data);
+    }
+
+
+    public static void main(String[] args) {
+       Main list = new Main();
+       list.insert(5);
+        list.insert(1);
+        list.insert(6);
+        list.insert(7);
+        list.insert(8);
+        list.insert(2);
+        list.insert(14);
+        list.insert(70);
+        list.insert(17);
+        list.insert(70);
         list.display();
+        list.size();
+        list.middle();
 
     }
 }
